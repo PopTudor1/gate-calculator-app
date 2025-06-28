@@ -1,0 +1,27 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-title {
+  font-weight: 700;
+  color: red;
+}
+
+.homepage-button {
+  border-radius: 8px;
+  border: 3px solid gray;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #940000;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  width: 200px;
+}
