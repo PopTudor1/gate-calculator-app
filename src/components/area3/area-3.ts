@@ -1,14 +1,16 @@
+import { GateTypeEnum } from "../../enums/gate-type-enum";
 import type { GateModel } from "../../models/gate-model";
-import A3Row1 from "../area3/rows/row1";
-import A3Row10 from "../area3/rows/row10";
-import A3Row2 from "../area3/rows/row2";
-import A3Row3 from "../area3/rows/row3";
-import A3Row4 from "../area3/rows/row4";
-import A3Row5 from "../area3/rows/row5";
-import A3Row6 from "../area3/rows/row6";
-import A3Row7 from "../area3/rows/row7";
-import A3Row8 from "../area3/rows/row8";
-import A3Row9 from "../area3/rows/row9";
+import { RuneWithChance } from "../../models/rune-model";
+import A3Row1, { a3Row1RuneInput } from "../area3/rows/row1";
+import A3Row10, { a3Row10RuneInput } from "../area3/rows/row10";
+import A3Row2, { a3Row2RuneInput } from "../area3/rows/row2";
+import A3Row3, { a3Row3RuneInput } from "../area3/rows/row3";
+import A3Row4, { a3Row4RuneInput } from "../area3/rows/row4";
+import A3Row5, { a3Row5RuneInput } from "../area3/rows/row5";
+import A3Row6, { a3Row6RuneInput } from "../area3/rows/row6";
+import A3Row7, { a3Row7RuneInput } from "../area3/rows/row7";
+import A3Row8, { a3Row8RuneInput } from "../area3/rows/row8";
+import A3Row9, { a3Row9RuneInput } from "../area3/rows/row9";
 
 const Area3: GateModel[] = [
   ...A3Row1,
@@ -24,3 +26,119 @@ const Area3: GateModel[] = [
 ];
 
 export default Area3;
+
+export const area3GateTypesInput: GateTypeEnum[] = [
+  //row 1
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.BOSS,
+  GateTypeEnum.MONSTER_HARD,
+  GateTypeEnum.GUILD,
+  GateTypeEnum.MONSTER_HARD,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.BOSS,
+  //row2
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row3
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row4
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row5
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row6
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row7
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row8
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row9
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  //row10
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_EASY,
+];
+
+export const area3RunesInput: RuneWithChance[][] = [
+  ...a3Row1RuneInput,
+  ...a3Row2RuneInput,
+  ...a3Row3RuneInput,
+  ...a3Row4RuneInput,
+  ...a3Row5RuneInput,
+  ...a3Row6RuneInput,
+  ...a3Row7RuneInput,
+  ...a3Row8RuneInput,
+  ...a3Row9RuneInput,
+  ...a3Row10RuneInput,
+];

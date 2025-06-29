@@ -2,6 +2,7 @@ import { GateStatusEnum } from "../../../enums/gate-status.enum";
 import { GateTypeEnum } from "../../../enums/gate-type-enum";
 import { RuneTypeEnum } from "../../../enums/rune-type-enum";
 import type { GateModel } from "../../../models/gate-model";
+import { RuneWithChance } from "../../../models/rune-model";
 
 const A5Row9: GateModel[] = [
   {
@@ -196,3 +197,42 @@ const A5Row9: GateModel[] = [
 ];
 
 export default A5Row9;
+
+export const a5Row9RuneInput: RuneWithChance[][] = [
+  [
+    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.C, chance: 20 },
+  ],
+  [
+    { rune: RuneTypeEnum.A, chance: 10 },
+    { rune: RuneTypeEnum.S, chance: 5 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.C, chance: 20 },
+  ],
+  [
+    { rune: RuneTypeEnum.A, chance: 10 },
+    { rune: RuneTypeEnum.S, chance: 5 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.C, chance: 20 },
+  ],
+  [
+    { rune: RuneTypeEnum.A, chance: 10 },
+    { rune: RuneTypeEnum.S, chance: 5 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.C, chance: 20 },
+  ],
+  [
+    { rune: RuneTypeEnum.A, chance: 10 },
+    { rune: RuneTypeEnum.S, chance: 5 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.C, chance: 20 },
+  ],
+];

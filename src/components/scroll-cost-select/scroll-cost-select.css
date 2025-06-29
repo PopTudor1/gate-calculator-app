@@ -1,0 +1,14 @@
+.scroll-cost-select {
+  color: purple;
+  font-size: 14px;
+  font-weight: 800;
+  min-width: 120px;
+  background-color: lightgray;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.scroll-cost-option {
+  font-size: 14px;
+  font-weight: 800;
+}

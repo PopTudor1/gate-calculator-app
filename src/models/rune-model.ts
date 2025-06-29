@@ -7,3 +7,8 @@ export type RuneModel = {
   experience: number;
   imageUrl: string;
 };
+
+export type RuneWithChance = {
+  rune: RuneTypeEnum;
+  chance: number;
+};
