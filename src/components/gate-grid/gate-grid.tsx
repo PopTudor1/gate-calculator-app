@@ -20,10 +20,7 @@ const GateGrid: React.FC<Props> = ({ gates, topGates = [] }) => {
         <tr>
           <th></th> {/* Top-left corner empty */}
           {Array.from({ length: 9 }, (_, colIndex) => (
-            <th
-              style={{ color: "white", width: "50px" }}
-              key={`col-${colIndex}`}
-            >
+            <th className="col-index" key={`col-${colIndex}`}>
               Col {colIndex + 1}
             </th>
           ))}
@@ -32,9 +29,7 @@ const GateGrid: React.FC<Props> = ({ gates, topGates = [] }) => {
       <tbody>
         {gates.map((row, rowIndex) => (
           <tr key={rowIndex}>
-            <td style={{ color: "white", width: "50px" }}>
-              Row {rowIndex + 1}
-            </td>
+            <td className="row-index">Row {rowIndex + 1}</td>
             {row.map((gate, colIndex) => {
               const key = `${gate?.row}-${gate?.column}`;
               const rank = gate && topGateMap.get(key);

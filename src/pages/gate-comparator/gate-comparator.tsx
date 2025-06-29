@@ -49,9 +49,9 @@ export default function GateComparator() {
   return (
     <div className="page">
       <h1 style={{ color: "red" }}>GATE COMPARATOR</h1>
-      <p style={{ color: "white" }}>
+      <span className="madeBy">
         ( made by Tudique26 from the KNIGHTSXORDER guild on Trakan server )
-      </p>
+      </span>
 
       <div className="content">
         <div className="inputs-section">
