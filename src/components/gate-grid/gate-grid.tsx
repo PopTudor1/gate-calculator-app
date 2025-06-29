@@ -56,9 +56,7 @@ const GateGrid: React.FC<Props> = ({ gates, topGates = [] }) => {
                         Rune Exp: {(gate?.totalBuffExperience ?? 0).toFixed(2)}
                       </span>
                     )}
-                    <span className="gate-cell-cost">
-                      Scroll Cost: {gate?.scrollCost}
-                    </span>
+
                     {(gate?.efficiency ?? 0) > 0 && (
                       <span className="gate-cell-eff">
                         Efficiency: {(gate?.efficiency ?? 0).toFixed(2)}

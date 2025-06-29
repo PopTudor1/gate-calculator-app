@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/gate-comparator" element={<GateComparator />} />
-        <Route path="/gate-simulator" element={<GateComparator />} />
+        {/* <Route path="/gate-simulator" element={<GateComparator />} /> */}
       </Routes>
     </BrowserRouter>
   </StrictMode>

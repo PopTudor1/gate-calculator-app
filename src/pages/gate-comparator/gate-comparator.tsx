@@ -115,7 +115,7 @@ export default function GateComparator() {
         <div className="areas-section">
           {selectedArea && (
             <div className="table-section">
-              <h2 className="area-title">{selectedArea.name}</h2>
+              <span className="area-title">{selectedArea.name}</span>
               <GateGrid gates={grid} topGates={topGates} />
             </div>
           )}

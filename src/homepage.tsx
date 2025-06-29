@@ -8,20 +8,12 @@ export default function Homepage() {
     navigate("/gate-comparator");
   };
 
-  const handleSimulator = () => {
-    navigate("/gate-simulator");
-  };
-
   return (
     <div className="homepage">
-      <h1 className="homepage-title">This is the homepage</h1>
+      <h1 className="homepage-title">HOMEPAGE</h1>
 
       <button onClick={handleComparator} className="homepage-button">
         Go to Gate Comparator
-      </button>
-
-      <button onClick={handleSimulator} className="homepage-button">
-        Go to Gate Simulator
       </button>
     </div>
   );
