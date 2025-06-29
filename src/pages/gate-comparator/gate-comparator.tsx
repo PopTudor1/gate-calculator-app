@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AreasList from "../../components/areas-list";
 import { GateCountSelect } from "../../components/gate-count-select/gate-count-select";
 import GateGrid from "../../components/gate-grid/gate-grid";
@@ -10,6 +11,7 @@ import "./gate-comparator.css";
 import { getTopEfficientGates, processArea } from "./utils";
 
 export default function GateComparator() {
+  const navigate = useNavigate();
   const [processedGates, setProcessedGates] = useState<GateModel[]>([]);
   const [selectedArea, setSelectedArea] = useState<AreaModel>(AreasList[0]);
   const [selectedScrollCost, setSelectedScrollCost] = useState<ScrollCostEnum>(
@@ -46,6 +48,11 @@ export default function GateComparator() {
     setTopGates(top);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthorized");
+    navigate("/");
+  };
+
   return (
     <div className="page">
       <h1 style={{ color: "red" }}>GATE COMPARATOR</h1>
@@ -56,6 +63,9 @@ export default function GateComparator() {
       <div className="content">
         <div className="inputs-section">
           <div className="inputs-content">
+            <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
             <label className="step-label">Step 1 : Select your Area</label>
             <div>
               {AreasList.map((area, index) => (
