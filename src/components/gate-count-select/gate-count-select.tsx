@@ -21,6 +21,12 @@ export const GateCountSelect: React.FC<Props> = ({ value, onChange }) => {
       <option className="gate-count-option" value={15}>
         15 Gates
       </option>
+      <option className="gate-count-option" value={20}>
+        20 Gates
+      </option>
+      <option className="gate-count-option" value={25}>
+        25 Gates
+      </option>
     </select>
   );
 };

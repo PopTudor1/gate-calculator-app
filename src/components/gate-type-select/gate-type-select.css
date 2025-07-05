@@ -1,14 +1,17 @@
-.gate-count-select {
-  color: blue;
+.gate-type-select {
   font-size: 14px;
   font-weight: 800;
   min-width: 120px;
   background-color: lightgray;
   cursor: pointer;
   padding: 2px;
+
+  @media (max-width: 768px) {
+    min-width: 80px;
+  }
 }
 
-.gate-count-option {
+.gate-type-option {
   font-size: 14px;
   font-weight: 800;
 

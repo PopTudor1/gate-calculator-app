@@ -21,6 +21,22 @@
   }
 }
 
+.reset-button {
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  @media (max-width: 768px) {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+
 .madeBy {
   font-size: 16px;
   color: white;
@@ -56,6 +72,12 @@
     width: 100%;
     padding: 16px 0;
   }
+}
+
+.reset-button-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 .inputs-content {

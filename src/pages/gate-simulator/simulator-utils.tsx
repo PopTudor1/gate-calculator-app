@@ -33,10 +33,13 @@ export const calculateGateEfficiencies = (area: GateModel[]) => {
 //Get top gates by efficiency
 export const getTopEfficientGates = (
   gates: GateModel[],
-  count: number
+  count: number,
+  gateType: GateTypeEnum
 ): GateModel[] => {
   return [...gates]
-    .filter((gate) => gate.efficiency && gate.efficiency > 0)
+    .filter(
+      (gate) => gate.type === gateType && gate.efficiency && gate.efficiency > 0
+    )
     .sort((a, b) => b.efficiency - a.efficiency)
     .slice(0, count);
 };

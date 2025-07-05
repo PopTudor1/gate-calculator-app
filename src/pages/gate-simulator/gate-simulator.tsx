@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import AreasList from "../../components/areas-list";
 import { GateCountSelect } from "../../components/gate-count-select/gate-count-select";
 import GateGrid from "../../components/gate-grid/gate-grid";
-import { ScrollCostSelect } from "../../components/scroll-cost-select/scroll-cost-select";
-import { ScrollCostEnum } from "../../enums/scroll-cost-enum";
+import { GateTypeSelect } from "../../components/gate-type-select/gate-type-select";
+import { GateTypeEnum } from "../../enums/gate-type-enum";
 import { AreaModel } from "../../models/area-model";
 import { GateModel } from "../../models/gate-model";
 import "./gate-simulator.css";
@@ -14,8 +14,8 @@ export default function GateSimulator() {
   const navigate = useNavigate();
   const [processedGates, setProcessedGates] = useState<GateModel[]>([]);
   const [selectedArea, setSelectedArea] = useState<AreaModel>(AreasList[0]);
-  const [selectedScrollCost, setSelectedScrollCost] = useState<ScrollCostEnum>(
-    ScrollCostEnum.SCROLLS_6
+  const [selectedGateType, setSelectedGateType] = useState<GateTypeEnum>(
+    GateTypeEnum.MONSTER_EASY
   );
   const [topGates, setTopGates] = useState<GateModel[]>([]);
   const [topGatesCount, setTopGatesCount] = useState<number>(10);
@@ -44,8 +44,16 @@ export default function GateSimulator() {
   });
 
   const handleShowTopGates = () => {
-    const top = getTopEfficientGates(processedGates, topGatesCount);
+    const top = getTopEfficientGates(
+      processedGates,
+      topGatesCount,
+      selectedGateType
+    );
     setTopGates(top);
+  };
+
+  const handleReset = () => {
+    setTopGates([]);
   };
 
   const handleLogout = () => {
@@ -63,9 +71,14 @@ export default function GateSimulator() {
       <div className="content">
         <div className="inputs-section">
           <div className="inputs-content">
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
+            <div className="reset-button-container">
+              <button onClick={handleLogout} className="logout-button">
+                Logout
+              </button>
+              <button onClick={handleReset} className="reset-button">
+                Reset Gates
+              </button>
+            </div>
             <label className="step-label">Step 1 : Select your Area</label>
             <div>
               {AreasList.map((area, index) => (
@@ -78,16 +91,15 @@ export default function GateSimulator() {
                 </button>
               ))}
             </div>
-            <label className="step-label">
-              Step 2 : Select your scroll cost
-            </label>
-            <ScrollCostSelect
-              value={selectedScrollCost}
+            <label className="step-label">Step 2 : Select the gate type</label>
+            <GateTypeSelect
+              value={selectedGateType}
               onChange={(value) => {
-                setSelectedScrollCost(value);
+                setSelectedGateType(value);
                 setTopGates([]); // reset top gates on scroll cost change
               }}
             />
+
             <label className="step-label">
               Step 3 : Select how many gates to show
             </label>

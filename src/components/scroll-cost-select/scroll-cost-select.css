@@ -14,6 +14,10 @@
 }
 
 .scroll-cost-option {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 }
