@@ -20,7 +20,7 @@
   font-size: 20px;
   color: rgb(169, 131, 204);
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -28,7 +28,7 @@
 .gate-type-text {
   font-size: 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -37,7 +37,7 @@
   font-size: 20px;
   color: yellow;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -46,7 +46,7 @@
   font-size: 20px;
   color: orange;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -55,7 +55,7 @@
   font-size: 20px;
   color: rgb(196, 10, 196);
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -64,7 +64,7 @@
   font-size: 20px;
   color: greenyellow;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -73,7 +73,7 @@
   font-size: 20px;
   color: lightgreen;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -82,7 +82,7 @@
   font-size: 20px;
   color: red;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 12px;
   }
 }
@@ -92,7 +92,7 @@
   border: 1px solid #ddd;
   padding: 8px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding: 4px;
   }
 }
@@ -109,7 +109,7 @@
   font-size: 16px;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 10px;
   }
 }
@@ -127,7 +127,7 @@
 
   overflow-x: auto;
 
-  @media (min-height: 768px) {
+  @media (min-height: 1024px) {
     max-height: 500px;
   }
 }
