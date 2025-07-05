@@ -12,7 +12,7 @@ type Props = {
   topGates?: GateModel[];
   isGateComparator?: boolean;
   selectedGates?: GateModel[];
-  handleToggleOrAddGatesOnly: (
+  handleToggleOrAddGatesOnly?: (
     gates: GateModel | GateModel[],
     toggleMode: boolean
   ) => void;
@@ -42,7 +42,7 @@ const GateGrid: React.FC<Props> = ({
               key={`col-${colIndex}`}
               onClick={() => {
                 const colGates = getSelectableColumnGates(gates, colIndex);
-                handleToggleOrAddGatesOnly(colGates, true); // use add-only toggle
+                handleToggleOrAddGatesOnly?.(colGates, true); // use add-only toggle
               }}
             >
               Col {colIndex + 1}
@@ -57,7 +57,7 @@ const GateGrid: React.FC<Props> = ({
               className="row-index"
               onClick={() => {
                 const rowGates = getSelectableRowGates(row);
-                handleToggleOrAddGatesOnly(rowGates, true); // use add-only toggle
+                handleToggleOrAddGatesOnly?.(rowGates, true); // use add-only toggle
               }}
             >
               Row {rowIndex + 1}
