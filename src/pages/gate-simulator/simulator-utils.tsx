@@ -1,7 +1,9 @@
 import gateTypeProperties from "../../components/gate-type-properties";
+import runeTypeProperties from "../../components/rune-type-properties";
 import { GateTypeEnum } from "../../enums/gate-type-enum";
 import { AreaModel } from "../../models/area-model";
 import { GateModel } from "../../models/gate-model";
+import { RuneModel } from "../../models/rune-model";
 
 // Calculates efficiencies for one area
 export const calculateGateEfficiencies = (area: GateModel[]) => {
@@ -39,18 +41,37 @@ export const getTopEfficientGates = (
     .slice(0, count);
 };
 
-//Update Area Gates based on type entered by user
+// Update Area Gates based on type entered by user
 export const updateGatesBasedOnTypes = (area: AreaModel): AreaModel => {
   const updatedGatesList = area.gatesList.map((gate, index) => {
     const gateType = area.gateTypesInput[index];
     const properties = gateTypeProperties[gateType];
 
+    // Get rune inputs for this gate
+    const runeInputs = area.runesInput[index];
+
+    // Create runesList from runeInputs
+    const runesList: RuneModel[] = runeInputs.map(
+      (runeWithChance, runeIndex) => {
+        const runeProps = runeTypeProperties[runeWithChance.rune];
+        return {
+          index: runeIndex,
+          type: runeWithChance.rune,
+          chance: runeWithChance.chance,
+          experience: runeProps.experience,
+          imageUrl: runeProps.imageUrl,
+        };
+      }
+    );
+
+    // Create the updated gate with updated runes
     return {
       ...gate,
       type: gateType,
       imageUrl: properties.imageUrl,
       scrollCost: properties.scrollCost,
       costIncrement: properties.costIncrement,
+      runesList,
     };
   });
 

@@ -1,0 +1,133 @@
+.no-gates-message {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.gate-table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.selected-gates-table {
+  /* width: 100%; */
+  border-collapse: collapse;
+}
+
+.area-name-text {
+  font-size: 20px;
+  color: rgb(169, 131, 204);
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.gate-type-text {
+  font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.row-text {
+  font-size: 20px;
+  color: yellow;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.col-text {
+  font-size: 20px;
+  color: orange;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.scroll-cost-text {
+  font-size: 20px;
+  color: rgb(196, 10, 196);
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.efficiency-text {
+  font-size: 20px;
+  color: greenyellow;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.monster-easy {
+  font-size: 20px;
+  color: lightgreen;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.monster-hard {
+  font-size: 20px;
+  color: red;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.selected-gates-table th,
+.selected-gates-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+
+  @media (max-width: 768px) {
+    padding: 4px;
+  }
+}
+
+.selected-gates-table th {
+  /* background-color: #f2f2f2; */
+  text-align: left;
+}
+
+.remove-gate-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+}
+.remove-gate-button:hover {
+  color: darkred;
+}
+
+.scrollable-table-container {
+  max-height: 400px; /* adjust as needed */
+  overflow-y: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  overflow-x: auto;
+
+  @media (min-height: 768px) {
+    max-height: 500px;
+  }
+}

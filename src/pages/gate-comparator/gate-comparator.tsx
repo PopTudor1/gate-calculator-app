@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AreasList from "../../components/areas-list";
-import { GateCountSelect } from "../../components/gate-count-select/gate-count-select";
 import GateGrid from "../../components/gate-grid/gate-grid";
-import { ScrollCostSelect } from "../../components/scroll-cost-select/scroll-cost-select";
+import GateTable from "../../components/gate-table/gate-table";
 import { ScrollCostEnum } from "../../enums/scroll-cost-enum";
 import { AreaModel } from "../../models/area-model";
 import { GateModel } from "../../models/gate-model";
+import { processArea } from "../gate-simulator/simulator-utils";
+import {
+  toggleGateSelection,
+  updateEfficienciesForAllAreas,
+  updateScrollCost,
+} from "./comparator-utils";
 import "./gate-comparator.css";
-import { getTopEfficientGates, processArea } from "./utils";
 
 export default function GateComparator() {
   const navigate = useNavigate();
   const [processedGates, setProcessedGates] = useState<GateModel[]>([]);
   const [selectedArea, setSelectedArea] = useState<AreaModel>(AreasList[0]);
-  const [selectedScrollCost, setSelectedScrollCost] = useState<ScrollCostEnum>(
-    ScrollCostEnum.SCROLLS_6
-  );
-  const [topGates, setTopGates] = useState<GateModel[]>([]);
-  const [topGatesCount, setTopGatesCount] = useState<number>(10);
+  const [selectedGatesByArea, setSelectedGatesByArea] = useState<
+    Record<string, GateModel[]>
+  >({});
   const grid: (GateModel | null)[][] = Array.from({ length: 10 }, () =>
     Array.from({ length: 9 }, () => null)
   );
@@ -28,11 +30,71 @@ export default function GateComparator() {
     handleAreaClick(selectedArea);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthorized");
+    navigate("/");
+  };
+
   const handleAreaClick = (area: AreaModel) => {
     const sortedResults = processArea(area);
     setSelectedArea(area);
     setProcessedGates(sortedResults);
-    setTopGates([]); // reset top gates on area change
+  };
+
+  const handleToggleOrAddGatesOnly = (
+    gates: GateModel | GateModel[],
+    toggleMode: boolean
+  ) => {
+    const updated = toggleGateSelection(
+      gates,
+      selectedGatesByArea,
+      selectedArea.name,
+      toggleMode
+    );
+    setSelectedGatesByArea(updated);
+  };
+  const handleRecalculateEfficiencies = () => {
+    const updatedMap = updateEfficienciesForAllAreas(selectedGatesByArea);
+    setSelectedGatesByArea(updatedMap);
+  };
+
+  const handleResetSelectedGates = () => {
+    setSelectedGatesByArea((prev) => ({
+      ...prev,
+      [selectedArea.name]: [],
+    }));
+  };
+
+  const handleRemoveGate = (areaName: string, row: number, column: number) => {
+    setSelectedGatesByArea((prev) => {
+      const gates = prev[areaName];
+      if (!gates) return prev;
+
+      const updatedGates = gates.filter(
+        (gate) => !(gate.row === row && gate.column === column)
+      );
+
+      return {
+        ...prev,
+        [areaName]: updatedGates,
+      };
+    });
+  };
+
+  const onUpdateScrollCost = (
+    areaName: string,
+    row: number,
+    column: number,
+    newCost: ScrollCostEnum
+  ) => {
+    const updated = updateScrollCost(
+      areaName,
+      row,
+      column,
+      newCost,
+      selectedGatesByArea
+    );
+    setSelectedGatesByArea(updated);
   };
 
   processedGates.forEach((gate) => {
@@ -43,92 +105,83 @@ export default function GateComparator() {
     }
   });
 
-  const handleShowTopGates = () => {
-    const top = getTopEfficientGates(processedGates, topGatesCount);
-    setTopGates(top);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("isAuthorized");
-    navigate("/");
-  };
+  const currentSelectedGates = selectedGatesByArea[selectedArea.name] || [];
 
   return (
-    <div className="page">
-      <h1 style={{ color: "red" }}>GATE COMPARATOR</h1>
-      <span className="madeBy">
+    <div className="comparator-page">
+      <span style={{ color: "red", fontSize: "32px" }}>GATE COMPARATOR</span>
+      <span className="comparator-madeBy">
         ( made by Tudique26 from the KNIGHTSXORDER guild on Trakan server )
       </span>
-
-      <div className="content">
-        <div className="inputs-section">
-          <div className="inputs-content">
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
-            <label className="step-label">Step 1 : Select your Area</label>
-            <div>
-              {AreasList.map((area, index) => (
-                <button
-                  className="area-button"
-                  key={index}
-                  onClick={() => handleAreaClick(area)}
-                >
-                  {area.name}
-                </button>
-              ))}
-            </div>
-            <label className="step-label">
-              Step 2 : Select your scroll cost
-            </label>
-            <ScrollCostSelect
-              value={selectedScrollCost}
-              onChange={(value) => {
-                setSelectedScrollCost(value);
-                setTopGates([]); // reset top gates on scroll cost change
-              }}
-            />
-            <label className="step-label">
-              Step 3 : Select how many gates to show
-            </label>
-            <GateCountSelect
-              value={topGatesCount}
-              onChange={(value) => {
-                setTopGatesCount(value);
-                setTopGates([]); // reset top gates on gate amount change
-              }}
-            />
-
-            <label className="step-label">
-              Step 4 : Show the best {topGatesCount} gates
-            </label>
-            <button className="best-gates-button" onClick={handleShowTopGates}>
-              Show Top {topGatesCount} Best Gates to Farm
-            </button>
-            <hr style={{ width: "100%" }} />
-            <div className="top-results">
-              <span className="top-text">Top {topGatesCount} Gates</span>
-              <ul className="top-gates-list">
-                {topGates.map((gate, index) => (
-                  <li
-                    key={`${gate.row}-${gate.column}`}
-                    className="top-gate-item"
-                  >
-                    <span>#{index + 1}</span> — Row: {gate.row}, Column:{" "}
-                    {gate.column}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <button onClick={handleLogout} className="logout-button">
+        Logout
+      </button>
+      <div className="comparator-content">
+        <div className="comparator-areas-section">
+          <label className="comparator-step-label">
+            Step 1: Select an area
+          </label>
+          <div>
+            {AreasList.map((area, index) => (
+              <button
+                className="comparator-area-button"
+                key={index}
+                onClick={() => handleAreaClick(area)}
+              >
+                {area.name}
+              </button>
+            ))}
           </div>
-        </div>
-        <div className="areas-section">
           {selectedArea && (
-            <div className="table-section">
-              <span className="area-title">{selectedArea.name}</span>
-              <GateGrid gates={grid} topGates={topGates} />
+            <div className="comparator-grid-section">
+              <div className="area-title-container">
+                <span className="area-title-text">{selectedArea.name}</span>
+                <button
+                  className="reset-gates-button"
+                  onClick={() => handleResetSelectedGates()}
+                >
+                  Reset Selected Gates
+                </button>
+              </div>
+              <label className="comparator-step-label">
+                Step 2: Select the gates
+              </label>
+
+              <GateGrid
+                gates={grid}
+                selectedGates={currentSelectedGates}
+                handleToggleOrAddGatesOnly={handleToggleOrAddGatesOnly}
+                isGateComparator={true}
+              />
             </div>
           )}
+        </div>
+        <div className="comparator-middle-section">
+          <span className="middle-arrow">{"=>"}</span>
+        </div>
+        <div className="comparator-table-section">
+          <label className="comparator-step-label">
+            Step 3: Select the Scroll Cost for each gate
+          </label>
+          <label className="comparator-step-label">
+            Step 4: Click on Calculate Efficiencies for Selected Gates
+          </label>
+          <div className="comparator-table-title-button">
+            <span className="selected-gates-summary">
+              Selected Gates Summary
+            </span>
+            <button
+              className="calculate-efficiencies-button"
+              onClick={handleRecalculateEfficiencies}
+            >
+              Calculate Efficiencies for Selected Gates
+            </button>
+          </div>
+          <GateTable
+            selectedGatesByArea={selectedGatesByArea}
+            onUpdateScrollCost={onUpdateScrollCost}
+            onRemoveGate={handleRemoveGate}
+          />
         </div>
       </div>
     </div>

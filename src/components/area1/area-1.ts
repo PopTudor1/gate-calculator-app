@@ -30,9 +30,9 @@ export default Area1;
 export const area1GateTypesInput: GateTypeEnum[] = [
   //row 1
   GateTypeEnum.MONSTER_EASY,
-  GateTypeEnum.BOSS,
   GateTypeEnum.MONSTER_HARD,
-  GateTypeEnum.GUILD,
+  GateTypeEnum.MONSTER_HARD,
+  GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_HARD,
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
@@ -70,8 +70,8 @@ export const area1GateTypesInput: GateTypeEnum[] = [
   GateTypeEnum.MONSTER_EASY,
   //row5
   GateTypeEnum.MONSTER_EASY,
-  GateTypeEnum.MONSTER_EASY,
-  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.GUILD,
+  GateTypeEnum.BOSS,
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,

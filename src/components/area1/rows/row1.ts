@@ -20,6 +20,18 @@ const A1Row1: GateModel[] = [
         experience: 1,
         imageUrl: "dummy rune url",
       },
+      {
+        type: RuneTypeEnum.A,
+        chance: 80,
+        experience: 1,
+        imageUrl: "dummy rune url",
+      },
+      {
+        type: RuneTypeEnum.S,
+        chance: 80,
+        experience: 1,
+        imageUrl: "dummy rune url",
+      },
     ],
     imageUrl: "dummy url",
     swipeCount: 0,
@@ -200,36 +212,39 @@ export default A1Row1;
 
 export const a1Row1RuneInput: RuneWithChance[][] = [
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.A, chance: 80 },
+    { rune: RuneTypeEnum.S, chance: 20 },
   ],
   [
-    { rune: RuneTypeEnum.A, chance: 10 },
+    { rune: RuneTypeEnum.C, chance: 10 },
     { rune: RuneTypeEnum.S, chance: 5 },
   ],
   [
+    { rune: RuneTypeEnum.D, chance: 100 },
     { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.C, chance: 80 },
+    { rune: RuneTypeEnum.B, chance: 80 },
+    { rune: RuneTypeEnum.SR, chance: 20 },
   ],
   [
     { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
+    { rune: RuneTypeEnum.A, chance: 5 },
   ],
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
-  ],
-  [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
-  ],
-  [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.B, chance: 80 },
+    { rune: RuneTypeEnum.SR, chance: 20 },
   ],
   [
     { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
+    { rune: RuneTypeEnum.SR, chance: 5 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.C, chance: 40 },
+  ],
+  [
+    { rune: RuneTypeEnum.A, chance: 50 },
+    { rune: RuneTypeEnum.S, chance: 25 },
   ],
   [
     { rune: RuneTypeEnum.D, chance: 80 },

@@ -4,6 +4,10 @@ import "./homepage.css";
 export default function Homepage() {
   const navigate = useNavigate();
 
+  const handleSimulator = () => {
+    navigate("/gate-simulator");
+  };
+
   const handleComparator = () => {
     navigate("/gate-comparator");
   };
@@ -12,6 +16,9 @@ export default function Homepage() {
     <div className="homepage">
       <h1 className="homepage-title">HOMEPAGE</h1>
 
+      <button onClick={handleSimulator} className="homepage-button">
+        Go to Gate Simulator
+      </button>
       <button onClick={handleComparator} className="homepage-button">
         Go to Gate Comparator
       </button>

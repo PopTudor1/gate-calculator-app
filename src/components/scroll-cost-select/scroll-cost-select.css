@@ -6,9 +6,14 @@
   background-color: lightgray;
   cursor: pointer;
   padding: 2px;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    min-width: 60px;
+  }
 }
 
 .scroll-cost-option {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 800;
 }
