@@ -118,7 +118,7 @@
 }
 
 .scrollable-table-container {
-  max-height: 400px; /* adjust as needed */
+  max-height: 560px; /* adjust as needed */
   overflow-y: auto;
   border-radius: 8px;
   display: flex;
