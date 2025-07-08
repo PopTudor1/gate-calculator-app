@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AreasList from "../../components/areas-list";
 import GateGrid from "../../components/gate-grid/gate-grid";
-import GateTable from "../../components/gate-table/gate-table";
+import GateTable, {
+  GateWithArea,
+} from "../../components/gate-table/gate-table";
 import { ScrollCostEnum } from "../../enums/scroll-cost-enum";
 import { AreaModel } from "../../models/area-model";
 import { GateModel } from "../../models/gate-model";
 import { processArea } from "../gate-simulator/simulator-utils";
 import {
+  numberToScrollEnum,
   toggleGateSelection,
   updateEfficienciesForAllAreas,
   updateScrollCost,
@@ -21,6 +24,8 @@ export default function GateComparator() {
   const [selectedGatesByArea, setSelectedGatesByArea] = useState<
     Record<string, GateModel[]>
   >({});
+  const [sortedGates, setSortedGates] = useState<GateWithArea[]>([]);
+
   const grid: (GateModel | null)[][] = Array.from({ length: 10 }, () =>
     Array.from({ length: 9 }, () => null)
   );
@@ -51,11 +56,49 @@ export default function GateComparator() {
       selectedArea.name,
       toggleMode
     );
+
     setSelectedGatesByArea(updated);
+
+    // 🔧 Keep sortedGates in sync
+    // if (sortedGates.length !== 0) {
+    const allGates: GateWithArea[] = Object.entries(updated).flatMap(
+      ([areaName, gates]) =>
+        gates.map((gate, index) => ({
+          areaName,
+          gateType: gate.type,
+          index,
+          row: gate.row,
+          column: gate.column,
+          scrollCost: numberToScrollEnum[gate.scrollCost],
+          efficiency: gate.efficiency,
+        }))
+    );
+
+    const sorted = allGates.sort((a, b) => b.efficiency - a.efficiency);
+    setSortedGates(sorted.length > 0 ? sorted : []);
+    // }
   };
+
   const handleRecalculateEfficiencies = () => {
     const updatedMap = updateEfficienciesForAllAreas(selectedGatesByArea);
     setSelectedGatesByArea(updatedMap);
+
+    const allGates: GateWithArea[] = Object.entries(updatedMap).flatMap(
+      ([areaName, gates]) =>
+        gates.map((gate, index) => ({
+          areaName,
+          gateType: gate.type,
+          index,
+          row: gate.row,
+          column: gate.column,
+          scrollCost: numberToScrollEnum[gate.scrollCost],
+          efficiency: gate.efficiency,
+        }))
+    );
+
+    // Sort by efficiency descending (if you want sorting here)
+    const sorted = allGates.sort((a, b) => b.efficiency - a.efficiency);
+    setSortedGates(sorted.length > 0 ? sorted : []);
   };
 
   const handleResetSelectedGates = () => {
@@ -63,6 +106,15 @@ export default function GateComparator() {
       ...prev,
       [selectedArea.name]: [],
     }));
+
+    // Also update sortedGates if active
+    if (sortedGates.length !== 0) {
+      const updatedSortedGates = sortedGates.filter(
+        (gate) => gate.areaName !== selectedArea.name
+      );
+
+      setSortedGates(updatedSortedGates.length > 0 ? updatedSortedGates : []);
+    }
   };
 
   const handleRemoveGate = (areaName: string, row: number, column: number) => {
@@ -74,10 +126,25 @@ export default function GateComparator() {
         (gate) => !(gate.row === row && gate.column === column)
       );
 
-      return {
+      const newState = {
         ...prev,
         [areaName]: updatedGates,
       };
+
+      // If we are in sorted mode, update that too
+      if (sortedGates.length !== 0) {
+        const updatedSortedGates = sortedGates.filter(
+          (gate) =>
+            !(
+              gate.areaName === areaName &&
+              gate.row === row &&
+              gate.column === column
+            )
+        );
+        setSortedGates(updatedSortedGates);
+      }
+
+      return newState;
     });
   };
 
@@ -95,6 +162,26 @@ export default function GateComparator() {
       selectedGatesByArea
     );
     setSelectedGatesByArea(updated);
+
+    if (sortedGates.length !== 0) {
+      // Rebuild flat list from updated grouped gates
+      const allGates: GateWithArea[] = Object.entries(updated).flatMap(
+        ([areaName, gates]) =>
+          gates.map((gate, index) => ({
+            areaName,
+            gateType: gate.type,
+            index,
+            row: gate.row,
+            column: gate.column,
+            scrollCost: numberToScrollEnum[gate.scrollCost],
+            efficiency: gate.efficiency,
+          }))
+      );
+
+      // Re-sort by efficiency
+      const sorted = allGates.sort((a, b) => b.efficiency - a.efficiency);
+      setSortedGates(sorted.length > 0 ? sorted : []);
+    }
   };
 
   processedGates.forEach((gate) => {
@@ -167,20 +254,19 @@ export default function GateComparator() {
             Step 4: Click on Calculate Efficiencies for Selected Gates
           </label>
           <div className="comparator-table-title-button">
-            <span className="selected-gates-summary">
-              Selected Gates Summary
-            </span>
+            <span className="selected-gates-summary">Gates Summary</span>
             <button
               className="calculate-efficiencies-button"
               onClick={handleRecalculateEfficiencies}
             >
-              Calculate Efficiencies for Selected Gates
+              Calculate Efficiencies For Selected Gates
             </button>
           </div>
           <GateTable
             selectedGatesByArea={selectedGatesByArea}
             onUpdateScrollCost={onUpdateScrollCost}
             onRemoveGate={handleRemoveGate}
+            sortedGates={sortedGates}
           />
         </div>
       </div>

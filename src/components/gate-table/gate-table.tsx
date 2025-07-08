@@ -5,7 +5,7 @@ import { numberToScrollEnum } from "../../pages/gate-comparator/comparator-utils
 import { ScrollCostSelect } from "../scroll-cost-select/scroll-cost-select";
 import "./gate-table.css";
 
-type GateWithArea = {
+export type GateWithArea = {
   areaName: string;
   gateType: GateTypeEnum;
   index: number;
@@ -24,28 +24,31 @@ type Props = {
     newCost: ScrollCostEnum
   ) => void;
   onRemoveGate: (areaName: string, row: number, column: number) => void;
+  sortedGates?: GateWithArea[];
 };
 
 const GateTable: React.FC<Props> = ({
   selectedGatesByArea,
   onUpdateScrollCost,
   onRemoveGate,
+  sortedGates,
 }) => {
-  const allSelectedGates: GateWithArea[] = Object.entries(
-    selectedGatesByArea
-  ).flatMap(([areaName, gates]) =>
-    gates.map((gate, index) => ({
-      areaName,
-      gateType: gate.type,
-      index: index,
-      row: gate.row,
-      column: gate.column,
-      scrollCost: numberToScrollEnum[gate.scrollCost],
-      efficiency: gate.efficiency,
-    }))
-  );
+  const allSelectedGates: GateWithArea[] | undefined =
+    sortedGates?.length !== 0
+      ? sortedGates
+      : Object.entries(selectedGatesByArea).flatMap(([areaName, gates]) =>
+          gates.map((gate, index) => ({
+            areaName,
+            gateType: gate.type,
+            index,
+            row: gate.row,
+            column: gate.column,
+            scrollCost: numberToScrollEnum[gate.scrollCost],
+            efficiency: gate.efficiency,
+          }))
+        );
 
-  if (allSelectedGates.length === 0) {
+  if (allSelectedGates?.length === 0) {
     return <span className="no-gates-message">No gates selected</span>;
   }
 
@@ -64,7 +67,7 @@ const GateTable: React.FC<Props> = ({
           </tr>
         </thead>
         <tbody>
-          {allSelectedGates.map(
+          {allSelectedGates?.map(
             (
               { areaName, gateType, row, column, scrollCost, efficiency },
               i
@@ -82,9 +85,11 @@ const GateTable: React.FC<Props> = ({
                 <td className="area-name-text">{areaName}</td>
                 <td
                   className={
-                    gateType === GateTypeEnum.MONSTER_EASY
-                      ? "monster-easy"
-                      : "monster-hard"
+                    gateType === GateTypeEnum.ELEM_BOSS
+                      ? "elem-boss"
+                      : gateType === GateTypeEnum.MONSTER_HARD
+                      ? "monster-hard"
+                      : "monster-easy"
                   }
                 >
                   {GateTypeEnumLabel[gateType]}

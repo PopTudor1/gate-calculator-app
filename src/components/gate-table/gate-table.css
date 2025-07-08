@@ -87,6 +87,15 @@
   }
 }
 
+.elem-boss {
+  font-size: 20px;
+  color: rgb(225, 6, 225);
+
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
+}
+
 .selected-gates-table th,
 .selected-gates-table td {
   border: 1px solid #ddd;

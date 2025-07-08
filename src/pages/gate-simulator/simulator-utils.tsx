@@ -54,7 +54,6 @@ export const updateGatesBasedOnTypes = (area: AreaModel): AreaModel => {
   const updatedGatesList = area.gatesList.map((gate, index) => {
     const gateType = area.gateTypesInput[index];
     const properties = gateTypeProperties[gateType];
-    console.log("Properties", properties, gateType);
 
     // Get rune inputs for this gate
     const runeInputs = area.runesInput[index];
