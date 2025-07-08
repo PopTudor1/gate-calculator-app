@@ -72,7 +72,12 @@ export const numberToScrollEnum: Record<number, ScrollCostEnum> =
 // Calculates efficiencies for one area
 export const calculateGateEfficiencies = (area: GateModel[]) => {
   return area.flat().map((gate) => {
-    if (gate.type === GateTypeEnum.BOSS || gate.type === GateTypeEnum.GUILD) {
+    if (
+      gate.type === GateTypeEnum.COOP_BOSS ||
+      gate.type === GateTypeEnum.ELEM_BOSS ||
+      gate.type === GateTypeEnum.SWEEP ||
+      gate.type === GateTypeEnum.GUILD
+    ) {
       return {
         ...gate,
         totalBuffExperience: 0,

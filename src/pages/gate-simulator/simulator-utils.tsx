@@ -8,7 +8,12 @@ import { RuneModel } from "../../models/rune-model";
 // Calculates efficiencies for one area
 export const calculateGateEfficiencies = (area: GateModel[]) => {
   return area.flat().map((gate) => {
-    if (gate.type === GateTypeEnum.BOSS || gate.type === GateTypeEnum.GUILD) {
+    if (
+      gate.type === GateTypeEnum.COOP_BOSS ||
+      gate.type === GateTypeEnum.ELEM_BOSS ||
+      gate.type === GateTypeEnum.SWEEP ||
+      gate.type === GateTypeEnum.GUILD
+    ) {
       return {
         ...gate,
         totalBuffExperience: 0,
@@ -49,6 +54,7 @@ export const updateGatesBasedOnTypes = (area: AreaModel): AreaModel => {
   const updatedGatesList = area.gatesList.map((gate, index) => {
     const gateType = area.gateTypesInput[index];
     const properties = gateTypeProperties[gateType];
+    console.log("Properties", properties, gateType);
 
     // Get rune inputs for this gate
     const runeInputs = area.runesInput[index];

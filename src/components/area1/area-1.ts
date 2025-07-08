@@ -33,11 +33,11 @@ export const area1GateTypesInput: GateTypeEnum[] = [
   GateTypeEnum.MONSTER_HARD,
   GateTypeEnum.MONSTER_HARD,
   GateTypeEnum.MONSTER_EASY,
-  GateTypeEnum.MONSTER_HARD,
+  GateTypeEnum.SWEEP,
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
-  GateTypeEnum.BOSS,
+  GateTypeEnum.COOP_BOSS,
   //row2
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
@@ -71,7 +71,7 @@ export const area1GateTypesInput: GateTypeEnum[] = [
   //row5
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.GUILD,
-  GateTypeEnum.BOSS,
+  GateTypeEnum.COOP_BOSS,
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
@@ -127,7 +127,7 @@ export const area1GateTypesInput: GateTypeEnum[] = [
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_HARD,
   GateTypeEnum.MONSTER_HARD,
-  GateTypeEnum.BOSS,
+  GateTypeEnum.COOP_BOSS,
 ];
 
 export const area1RunesInput: RuneWithChance[][] = [

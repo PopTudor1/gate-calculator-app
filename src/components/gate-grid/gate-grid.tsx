@@ -76,7 +76,9 @@ const GateGrid: React.FC<Props> = ({
                 <td
                   key={colIndex}
                   className={
-                    gate?.type === GateTypeEnum.BOSS ||
+                    gate?.type === GateTypeEnum.COOP_BOSS ||
+                    gate?.type === GateTypeEnum.ELEM_BOSS ||
+                    gate?.type === GateTypeEnum.SWEEP ||
                     gate?.type === GateTypeEnum.GUILD
                       ? "gate-cell-disabled"
                       : isGateComparator
@@ -86,7 +88,9 @@ const GateGrid: React.FC<Props> = ({
                   onClick={() => {
                     if (
                       gate &&
-                      gate.type !== GateTypeEnum.BOSS &&
+                      gate.type !== GateTypeEnum.COOP_BOSS &&
+                      gate.type !== GateTypeEnum.ELEM_BOSS &&
+                      gate.type !== GateTypeEnum.SWEEP &&
                       gate.type !== GateTypeEnum.GUILD
                     ) {
                       handleToggleOrAddGatesOnly?.(gate, false);

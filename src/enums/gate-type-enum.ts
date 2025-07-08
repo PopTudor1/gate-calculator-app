@@ -1,13 +1,17 @@
 export enum GateTypeEnum {
   GUILD = "GUILD",
-  BOSS = "BOSS",
+  COOP_BOSS = "COOP_BOSS",
+  ELEM_BOSS = "ELEM_BOSS",
   MONSTER_EASY = "MONSTER_EASY",
   MONSTER_HARD = "MONSTER_HARD",
+  SWEEP = "SWEEP",
 }
 
 export const GateTypeEnumLabel: Record<GateTypeEnum, string> = {
   [GateTypeEnum.GUILD]: "Guild",
-  [GateTypeEnum.BOSS]: "Boss",
-  [GateTypeEnum.MONSTER_EASY]: "Easy",
+  [GateTypeEnum.COOP_BOSS]: "Co-op Boss",
+  [GateTypeEnum.ELEM_BOSS]: "Elem Boss",
+  [GateTypeEnum.MONSTER_EASY]: "Normal",
   [GateTypeEnum.MONSTER_HARD]: "Hard",
+  [GateTypeEnum.SWEEP]: "Start",
 };
