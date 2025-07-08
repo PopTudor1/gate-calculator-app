@@ -200,39 +200,45 @@ export default A3Row4;
 
 export const a3Row4RuneInput: RuneWithChance[][] = [
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.D, chance: 100 },
     { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.B, chance: 17 },
+    { rune: RuneTypeEnum.A, chance: 7 },
   ],
   [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.C, chance: 15 },
+    { rune: RuneTypeEnum.B, chance: 5 },
   ],
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.C, chance: 8 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 1 },
+    { rune: RuneTypeEnum.D, chance: 1 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.C, chance: 4 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.C, chance: 6 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.D, chance: 20 },
+    { rune: RuneTypeEnum.C, chance: 11 },
+    { rune: RuneTypeEnum.B, chance: 1 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 100 },
     { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.B, chance: 10 },
   ],
   [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
-  ],
-  [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
-  ],
-  [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
-  ],
-  [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
-  ],
-  [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
-  ],
-  [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.D, chance: 1 },
+    { rune: RuneTypeEnum.D, chance: 1 },
   ],
 ];

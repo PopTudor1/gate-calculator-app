@@ -11,7 +11,7 @@ export const filterSelectableGates = (
     (g): g is GateModel =>
       g !== null &&
       g.type !== GateTypeEnum.COOP_BOSS &&
-      g.type !== GateTypeEnum.ELEM_BOSS &&
+      // g.type !== GateTypeEnum.ELEM_BOSS &&
       g.type !== GateTypeEnum.SWEEP &&
       g.type !== GateTypeEnum.GUILD
   );

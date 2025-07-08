@@ -77,7 +77,7 @@ const GateGrid: React.FC<Props> = ({
                   key={colIndex}
                   className={
                     gate?.type === GateTypeEnum.COOP_BOSS ||
-                    gate?.type === GateTypeEnum.ELEM_BOSS ||
+                    // gate?.type === GateTypeEnum.ELEM_BOSS ||
                     gate?.type === GateTypeEnum.SWEEP ||
                     gate?.type === GateTypeEnum.GUILD
                       ? "gate-cell-disabled"
@@ -89,7 +89,7 @@ const GateGrid: React.FC<Props> = ({
                     if (
                       gate &&
                       gate.type !== GateTypeEnum.COOP_BOSS &&
-                      gate.type !== GateTypeEnum.ELEM_BOSS &&
+                      // gate.type !== GateTypeEnum.ELEM_BOSS &&
                       gate.type !== GateTypeEnum.SWEEP &&
                       gate.type !== GateTypeEnum.GUILD
                     ) {

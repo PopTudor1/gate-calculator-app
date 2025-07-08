@@ -1,6 +1,7 @@
 export enum ScrollCostEnum {
   SCROLLS_6 = "SCROLLS_6",
   SCROLLS_8 = "SCROLLS_8",
+  SCROLLS_10 = "SCROLLS_10",
   SCROLLS_12 = "SCROLLS_12",
   SCROLLS_16 = "SCROLLS_16",
   SCROLLS_18 = "SCROLLS_18",
@@ -28,6 +29,7 @@ export enum ScrollCostEnum {
 export const ScrollCostEnumLabel: Record<ScrollCostEnum, string> = {
   [ScrollCostEnum.SCROLLS_6]: "6 Scrolls",
   [ScrollCostEnum.SCROLLS_8]: "8 Scrolls",
+  [ScrollCostEnum.SCROLLS_10]: "10 Scrolls",
   [ScrollCostEnum.SCROLLS_12]: "12 Scrolls",
   [ScrollCostEnum.SCROLLS_16]: "16 Scrolls",
   [ScrollCostEnum.SCROLLS_18]: "18 Scrolls",
@@ -55,6 +57,7 @@ export const ScrollCostEnumLabel: Record<ScrollCostEnum, string> = {
 export const ScrollCostEnumNumber: Record<ScrollCostEnum, number> = {
   [ScrollCostEnum.SCROLLS_6]: 6,
   [ScrollCostEnum.SCROLLS_8]: 8,
+  [ScrollCostEnum.SCROLLS_10]: 10,
   [ScrollCostEnum.SCROLLS_12]: 12,
   [ScrollCostEnum.SCROLLS_16]: 16,
   [ScrollCostEnum.SCROLLS_18]: 18,

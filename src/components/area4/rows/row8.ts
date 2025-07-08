@@ -200,39 +200,50 @@ export default A4Row8;
 
 export const a4Row8RuneInput: RuneWithChance[][] = [
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.A, chance: 20 },
+    { rune: RuneTypeEnum.S, chance: 7.4 },
+    { rune: RuneTypeEnum.SR, chance: 1.8 },
   ],
   [
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.B, chance: 20 },
+    { rune: RuneTypeEnum.A, chance: 18 },
+    { rune: RuneTypeEnum.S, chance: 3 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 1 },
+    { rune: RuneTypeEnum.D, chance: 1 },
+  ],
+  [
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.B, chance: 20 },
     { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
   ],
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
+    { rune: RuneTypeEnum.D, chance: 100 },
     { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.B, chance: 14 },
+    { rune: RuneTypeEnum.A, chance: 4 },
   ],
   [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
+    { rune: RuneTypeEnum.D, chance: 1 },
+    { rune: RuneTypeEnum.D, chance: 1 },
   ],
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.B, chance: 20 },
+    { rune: RuneTypeEnum.A, chance: 12 },
+    { rune: RuneTypeEnum.S, chance: 1 },
   ],
   [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
+    { rune: RuneTypeEnum.D, chance: 100 },
+    { rune: RuneTypeEnum.B, chance: 20 },
+    { rune: RuneTypeEnum.A, chance: 14 },
+    { rune: RuneTypeEnum.S, chance: 1.8 },
   ],
   [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
-  ],
-  [
-    { rune: RuneTypeEnum.A, chance: 10 },
-    { rune: RuneTypeEnum.S, chance: 5 },
-  ],
-  [
-    { rune: RuneTypeEnum.D, chance: 80 },
-    { rune: RuneTypeEnum.C, chance: 20 },
+    { rune: RuneTypeEnum.D, chance: 1 },
+    { rune: RuneTypeEnum.D, chance: 1 },
   ],
 ];

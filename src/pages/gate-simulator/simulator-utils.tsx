@@ -10,7 +10,7 @@ export const calculateGateEfficiencies = (area: GateModel[]) => {
   return area.flat().map((gate) => {
     if (
       gate.type === GateTypeEnum.COOP_BOSS ||
-      gate.type === GateTypeEnum.ELEM_BOSS ||
+      // gate.type === GateTypeEnum.ELEM_BOSS ||
       gate.type === GateTypeEnum.SWEEP ||
       gate.type === GateTypeEnum.GUILD
     ) {

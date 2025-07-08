@@ -6,10 +6,24 @@ type Props = {
 };
 
 export const GateTypeSelect: React.FC<Props> = ({ value, onChange }) => {
-  const allowedValues = [GateTypeEnum.MONSTER_EASY, GateTypeEnum.MONSTER_HARD];
+  const allowedValues = [
+    GateTypeEnum.MONSTER_EASY,
+    GateTypeEnum.MONSTER_HARD,
+    GateTypeEnum.ELEM_BOSS,
+  ];
 
-  const getTextColor = (type: GateTypeEnum) =>
-    type === GateTypeEnum.MONSTER_EASY ? "green" : "red";
+  const getTextColor = (type: GateTypeEnum) => {
+    switch (type) {
+      case GateTypeEnum.MONSTER_EASY:
+        return "green";
+      case GateTypeEnum.MONSTER_HARD:
+        return "red";
+      case GateTypeEnum.ELEM_BOSS:
+        return "purple";
+      default:
+        return "black";
+    }
+  };
 
   return (
     <select
