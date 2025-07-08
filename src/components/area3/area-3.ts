@@ -47,7 +47,7 @@ export const area3GateTypesInput: GateTypeEnum[] = [
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_HARD,
   GateTypeEnum.COOP_BOSS,
-  GateTypeEnum.MONSTER_EASY,
+  GateTypeEnum.MONSTER_HARD,
   //row3
   GateTypeEnum.MONSTER_EASY,
   GateTypeEnum.MONSTER_EASY,
