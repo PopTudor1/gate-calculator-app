@@ -38,6 +38,11 @@ const gateTypeProperties = {
     scrollCost: 1,
     costIncrement: 0,
   },
+  [GateTypeEnum.ALL]: {
+    imageUrl: SweepIcon,
+    scrollCost: 1,
+    costIncrement: 0,
+  },
 };
 
 export default gateTypeProperties;

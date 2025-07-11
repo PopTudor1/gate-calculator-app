@@ -41,12 +41,20 @@ export const getTopEfficientGates = (
   count: number,
   gateType: GateTypeEnum
 ): GateModel[] => {
-  return [...gates]
-    .filter(
-      (gate) => gate.type === gateType && gate.efficiency && gate.efficiency > 0
-    )
-    .sort((a, b) => b.efficiency - a.efficiency)
-    .slice(0, count);
+  if (gateType === GateTypeEnum.ALL) {
+    return [...gates]
+      .filter((gate) => gate.efficiency && gate.efficiency > 0)
+      .sort((a, b) => b.efficiency - a.efficiency)
+      .slice(0, count);
+  } else {
+    return [...gates]
+      .filter(
+        (gate) =>
+          gate.type === gateType && gate.efficiency && gate.efficiency > 0
+      )
+      .sort((a, b) => b.efficiency - a.efficiency)
+      .slice(0, count);
+  }
 };
 
 // Update Area Gates based on type entered by user

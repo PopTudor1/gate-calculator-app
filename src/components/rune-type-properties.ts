@@ -1,7 +1,6 @@
 import ScrollIcon from "../assets/scroll.png";
 import { RuneTypeEnum } from "../enums/rune-type-enum";
 
-//TODO change this with the actual values from the game
 const runeTypeProperties = {
   [RuneTypeEnum.D]: {
     imageUrl: ScrollIcon,
@@ -21,11 +20,11 @@ const runeTypeProperties = {
   },
   [RuneTypeEnum.S]: {
     imageUrl: ScrollIcon,
-    experience: 100,
+    experience: 110,
   },
   [RuneTypeEnum.SR]: {
     imageUrl: ScrollIcon,
-    experience: 150,
+    experience: 160,
   },
 };
 

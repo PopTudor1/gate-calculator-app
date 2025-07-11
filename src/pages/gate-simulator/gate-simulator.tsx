@@ -119,7 +119,10 @@ export default function GateSimulator() {
             </button>
             <hr style={{ width: "100%" }} />
             <div className="top-results">
-              <span className="top-text">Top {topGatesCount} Gates</span>
+              <span className="top-text">
+                Top {topGatesCount} Gates for{" "}
+                <span className="area-title">{selectedArea.name}</span>
+              </span>
               <ul className="top-gates-list">
                 {topGates.map((gate, index) => (
                   <li

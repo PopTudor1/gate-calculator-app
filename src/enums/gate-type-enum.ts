@@ -5,6 +5,7 @@ export enum GateTypeEnum {
   MONSTER_EASY = "MONSTER_EASY",
   MONSTER_HARD = "MONSTER_HARD",
   SWEEP = "SWEEP",
+  ALL = "ALL",
 }
 
 export const GateTypeEnumLabel: Record<GateTypeEnum, string> = {
@@ -14,4 +15,5 @@ export const GateTypeEnumLabel: Record<GateTypeEnum, string> = {
   [GateTypeEnum.MONSTER_EASY]: "Normal",
   [GateTypeEnum.MONSTER_HARD]: "Hard",
   [GateTypeEnum.SWEEP]: "Start",
+  [GateTypeEnum.ALL]: "All",
 };
