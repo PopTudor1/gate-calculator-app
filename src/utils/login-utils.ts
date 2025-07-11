@@ -1,6 +1,5 @@
-// Password parts, base64-encoded separately for extra obfuscation
-const part1 = "S25pZ2h0"; // base64 for "Knight"
-const part2 = "c1hPcmRlcg=="; // base64 for "sXOrder"
+const part1 = import.meta.env.VITE_PART1;
+const part2 = import.meta.env.VITE_PART2;
 
 function decodeBase64(str: string) {
   try {
