@@ -6,7 +6,6 @@ import MonsterHardIcon from "../assets/guild-battle-gates/monster-hard-gate.png"
 import SweepIcon from "../assets/guild-battle-gates/sweep-gate.png";
 import { GateTypeEnum } from "../enums/gate-type-enum";
 
-//TODO check if this values are correct
 const gateTypeProperties = {
   [GateTypeEnum.GUILD]: {
     imageUrl: GuildGateIcon,

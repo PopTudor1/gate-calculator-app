@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AreasList from "../../components/areas-list";
+import AreasList1 from "../../components/data-set-1/areas-list-1";
 import GateGrid from "../../components/gate-grid/gate-grid";
 import GateTable, {
   GateWithArea,
@@ -20,7 +20,7 @@ import "./gate-comparator.css";
 export default function GateComparator() {
   const navigate = useNavigate();
   const [processedGates, setProcessedGates] = useState<GateModel[]>([]);
-  const [selectedArea, setSelectedArea] = useState<AreaModel>(AreasList[0]);
+  const [selectedArea, setSelectedArea] = useState<AreaModel>(AreasList1[0]);
   const [selectedGatesByArea, setSelectedGatesByArea] = useState<
     Record<string, GateModel[]>
   >({});
@@ -209,7 +209,7 @@ export default function GateComparator() {
             Step 1: Select an area
           </label>
           <div>
-            {AreasList.map((area, index) => (
+            {AreasList1.map((area, index) => (
               <button
                 className="comparator-area-button"
                 key={index}
