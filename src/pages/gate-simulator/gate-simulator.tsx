@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AreasList1 from "../../components/data-set-1/areas-list-1";
+import AreasList2 from "../../components/data-set-2/areas-list-2";
 import { GateCountSelect } from "../../components/gate-count-select/gate-count-select";
 import GateGrid from "../../components/gate-grid/gate-grid";
 import { GateTypeSelect } from "../../components/gate-type-select/gate-type-select";
@@ -13,7 +13,7 @@ import { getTopEfficientGates, processArea } from "./simulator-utils";
 export default function GateSimulator() {
   const navigate = useNavigate();
   const [processedGates, setProcessedGates] = useState<GateModel[]>([]);
-  const [selectedArea, setSelectedArea] = useState<AreaModel>(AreasList1[0]);
+  const [selectedArea, setSelectedArea] = useState<AreaModel>(AreasList2[0]);
   const [selectedGateType, setSelectedGateType] = useState<GateTypeEnum>(
     GateTypeEnum.MONSTER_EASY
   );
@@ -81,7 +81,7 @@ export default function GateSimulator() {
             </div>
             <label className="step-label">Step 1 : Select your Area</label>
             <div>
-              {AreasList1.map((area, index) => (
+              {AreasList2.map((area, index) => (
                 <button
                   className="area-button"
                   key={index}

@@ -109,11 +109,11 @@ const GateGrid: React.FC<Props> = ({
                   <div className="gate-cell-content">
                     {rank && <span className={"gate-rank"}>#{rank}</span>}
 
-                    {(gate?.efficiency ?? 0) > 0 && !isGateComparator && (
+                    {/* {(gate?.efficiency ?? 0) > 0 && !isGateComparator && (
                       <span className="gate-cell-eff">
                         Efficiency: {(gate?.efficiency ?? 0).toFixed(2)}
                       </span>
-                    )}
+                    )} */}
                   </div>
                 </td>
               );
